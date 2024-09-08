@@ -15,3 +15,6 @@ The main screen allows user to select the following functions:
   <li>Save products to file.</li>
   <li>Print list products from the file.</li>
 </ol>
+
+<strong>Made by @isepipi</strong>
+<p><strong>Note: This is not your code, just watch and learn how to code logically. Thanks </strong></p>
