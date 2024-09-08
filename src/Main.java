@@ -1,6 +1,11 @@
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author isepipi
+ */
+
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
     public static final String BRANDID_VALID_FILE = "resources/BrandValid.txt";
