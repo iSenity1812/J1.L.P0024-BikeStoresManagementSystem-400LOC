@@ -1,15 +1,53 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.util.Scanner;
+
+public class Main {
+    private static final Scanner sc = new Scanner(System.in);
+    public static final String BRANDID_VALID_FILE = "resources/BrandValid.txt";
+    public static final String CATEGORYID_VALID_FILE = "resources/CategoryValid.txt";
+    public static final String PRODUCTS = "resources/Products.txt";
+    public static void main(String[] args) {
+        ProductManager pm = new ProductManager();
+
+        while (true) {
+            Utils.mainMenu();
+            int choice;
+            System.out.print("Choose an option: ");
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("[!] Invalid input. Please enter a number.");
+                continue;
+            }
+
+
+            switch (choice) {
+                case 1:
+                    pm.createProduct();
+                    break;
+                case 2:
+                    pm.searchProductByName();
+                    break;
+                case 3:
+                    pm.updateProductInfo();
+                    break;
+                case 4:
+                    pm.removeProduct();
+                    break;
+                case 5:
+                    pm.saveToFile();
+                    break;
+                case 6:
+                    pm.printFromFile();
+                    break;
+                case 0:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("[!] Invalid choice.");
+            }
         }
     }
 }
