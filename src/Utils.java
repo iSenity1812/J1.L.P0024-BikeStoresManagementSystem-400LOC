@@ -164,28 +164,33 @@ public class Utils {
         String id;
         if (products.isEmpty()) {
             // Dont have anything in unsaved list
-            List<String> list = readFile(filename); // Get id from Products.txt
-
+            List<String> list = readFile(filename); 
+            // Get id from Products.txt
             String lastProduct = null;
+
+            // Read lines from (bottom -> top)
             for (int i = list.size() - 1; i >= 0; i--) {
                 String line = list.get(i).trim();
-
+                
                 if (!line.isEmpty()) {
                     lastProduct = line;
                     break;
                 }
             }
-
+            /* Get last product's info (id, name, ....)
+                Split string to 2 parts -> ["id", "name, ..."]. Then get the first part (id)
+                +1 then add the prefix to that string
+            */
             if (list.isEmpty()) {
                 id = prefix + "001";
             } else {
-                String[] parts = lastProduct.split(",", 2);
-                String lastId = parts[0];
+                String[] parts = lastProduct.split(",", 2); //  ["id", "name, ..."]
+                String lastId = parts[0]; // get id (example: P001)
 
 //             Split num
-                int num = Integer.parseInt(lastId.substring(1));
+                int num = Integer.parseInt(lastId.substring(1)); // split num from id string ("P001"  --> 1)
                 num++;
-                id = prefix + String.format("%03d", num);
+                id = prefix + String.format("%03d", num); // Format string
             }
         } else {
             String lastId = products.get(products.size() - 1).getId(); // Get last
@@ -226,7 +231,7 @@ public class Utils {
         System.out.println("[+] File write successful.");
     }
 
-    // Read product from file
+    // Read product from file (String -> Product Object)
     public static List<Product> readProductFromFile(String filename) {
         List<Product> products = new ArrayList<>();
 
