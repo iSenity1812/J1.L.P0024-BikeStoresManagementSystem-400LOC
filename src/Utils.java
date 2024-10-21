@@ -96,7 +96,7 @@ public class Utils {
 
 
     // Check brand
-    // Read from file -> get valid id -> add to set?
+    // Read from file -> get valid id
     public static String getValidIdFromFile(String filename, String prompt, String errorMessage){
 
         String input;
